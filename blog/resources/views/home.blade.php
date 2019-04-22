@@ -11,9 +11,7 @@
                     <div class="row">
 
                         <div class="col-md-4">
-                            <painel titulo="Painel 1">
-                                Teste de componente dentro de componente
-                            </painel>
+                            <caixa></caixa>
                         </div>
                         <div class="col-md-4">
                             <painel titulo="Painel 2">
