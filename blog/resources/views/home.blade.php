@@ -11,7 +11,7 @@
                     <div class="row">
 
                         <div class="col-md-4">
-                            <caixa></caixa>
+                            <caixa qtd="230" titulo="Clientes ativos" url="#" cor="orange" icone="fa fa-shopping-cart"></caixa>
                         </div>
                         <div class="col-md-4">
                             <painel titulo="Painel 2">

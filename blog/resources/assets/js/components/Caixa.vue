@@ -1,22 +1,28 @@
 <template>
-    <div class="small-box bg-aqua">
+    <div class="small-box" v-bind:style="defineCor">
         <div class="inner">
-            <h3>150</h3>
+            <h3>{{qtd}}</h3>
 
-            <p>New Orders</p>
+            <p>{{titulo}}</p>
         </div>
         <div class="icon">
-            <i class="fa fa-shopping-cart"></i>
+            <i v-bind:class="icone"></i>
+            <!-- <i v-bind:class="fa fa-shopping-cart"></i> -->
         </div>
         <a href="#" class="small-box-footer">
-            More info <i class="fa fa-arrow-circle-right"></i>
+            Var mais <i class="fa fa-arrow-circle-right"></i>
         </a>
     </div>
 </template>
 
 <script>
     export default {
-        
+        props:['qtd', 'titulo', 'url', 'cor', 'icone'],
+        computed: {
+            defineCor: function(){
+                return 'background-color: '+this.cor+';'
+            }
+        }
     }
 </script>
 
@@ -30,6 +36,14 @@
         display: block;
         margin-bottom: 20px;
         box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        color: #fff;
+    }
+    .small-box:hover {
+        text-decoration: none;
+        color: #f9f9f9;
+    }
+    .small-box:hover .icon {
+        font-size: 92px;
     }
     .small-box>.inner {
         padding: 10px;
@@ -72,6 +86,10 @@
         z-index: 10;
         background: rgba(0,0,0,0.1);
         text-decoration: none;
+    }
+    .small-box>.small-box-footer:hover {
+        color: #fff;
+        background: rgba(0,0,0,0.15);
     }
 </style>
 
