@@ -14,8 +14,14 @@ class ArtigosController extends Controller
      */
     public function index()
     {
+        // Breadcumb
+        $listaMigalhas = json_encode([
+            ["titulo" => "Home", "url"=>route('home')],
+            ["titulo" => "Lista de Artigos", "url"=>''],
+        ]);
+
         // Cada nome separado por pontos, é como se fosse admin/artigos/index.blade.php
-        return view('admin.artigos.index');
+        return view('admin.artigos.index', compact('listaMigalhas'));
     }
 
     /**
