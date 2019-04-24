@@ -1,9 +1,10 @@
 <template>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Library</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Data</li>
+            <li v-for="item in lista" v-bind:class="defineClass">
+                <a v-if="item.url" v-bind:href="item.url">{{item.titulo}}</a>
+                <span v-if="!item.url">{{item.titulo}}</span>
+            </li>
         </ol>
     </nav>
 </template>
@@ -11,8 +12,14 @@
 <script>
     export default {
         props: ['lista'],
-        mounted: function(){
-            console.log(this.lista);
+        computed: {
+            defineClass: function(){
+                if(this.url){
+                    return "breadcrumb-item";
+                } else {
+                    return "breadcrumb-item active";
+                }
+            }
         }
     }
 </script>
