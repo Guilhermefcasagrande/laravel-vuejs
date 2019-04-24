@@ -8,7 +8,7 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <caixa qtd="230" titulo="Clientes ativos" url="#" cor="orange" icone="fa fa-shopping-cart"></caixa>
+                    <caixa qtd="230" titulo="Artigos" url="{{route('artigos.index')}}" cor="orange" icone="fa fa-shopping-cart"></caixa>
                 </div>
                 <div class="col-md-4">
                     <caixa qtd="100" titulo="Sites online" url="#" cor="green" icone="fas fa-globe-americas"></caixa>
