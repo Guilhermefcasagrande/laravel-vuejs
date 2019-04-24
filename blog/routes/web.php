@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+// Define grupo de rotas com prefixo admin
+// Ex prefixo: dominio.com.br/prefixo/rota
+Route::middleware('auth')->prefix('admin')->namespace('Admin')->group(function(){
+    Route::resource('artigos', 'ArtigosController');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');

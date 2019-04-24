@@ -9,7 +9,7 @@
             <i v-bind:class="icone"></i>
             <!-- <i v-bind:class="fa fa-shopping-cart"></i> -->
         </div>
-        <a href="#" class="small-box-footer">
+        <a v-bind:href="url" class="small-box-footer">
             Var mais <i class="fa fa-arrow-circle-right"></i>
         </a>
     </div>
