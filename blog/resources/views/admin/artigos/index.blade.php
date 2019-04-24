@@ -9,7 +9,7 @@
                 v-bind:itens="[
                     ['1', 'Titulo artigo','Curso de PHP'],
                     ['2', 'Titulo artigo','Curso de PHP'],
-                    ['3', 'Titulo artigo','Curso de PHP']
+                    ['3', 'Titulo artigo','Curso de VueJS']
                 ]"
                 criar="#criar"
                 detalhe="#criar"
