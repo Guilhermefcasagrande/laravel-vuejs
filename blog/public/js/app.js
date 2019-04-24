@@ -45628,6 +45628,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {
         lista: function lista() {
+
+            this.itens.sort(function (a, b) {
+                if (a[0] > b[0]) {
+                    return 1;
+                }
+                if (a[0] < b[0]) {
+                    return -1;
+                }
+                return 0;
+            });
+
             var busca = this.buscar;
             return this.itens.filter(function (resposta) {
                 for (var k = 0; k < resposta.length; k++) {

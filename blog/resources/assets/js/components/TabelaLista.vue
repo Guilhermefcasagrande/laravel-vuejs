@@ -54,6 +54,13 @@
         },
         computed:{
             lista: function(){
+
+                this.itens.sort(function(a,b){
+                    if (a[0] > b[0]) { return 1;}
+                    if (a[0] < b[0]) { return -1;}
+                    return 0;
+                });
+
                 let busca = this.buscar;
                 return this.itens.filter(resposta => {
                     for (let k = 0; k < resposta.length; k++) {
