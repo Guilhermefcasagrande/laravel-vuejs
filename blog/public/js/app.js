@@ -45524,6 +45524,10 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(72)
+}
 var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(60)
@@ -45532,7 +45536,7 @@ var __vue_template__ = __webpack_require__(61)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -45615,7 +45619,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['titulos', 'itens', 'criar', 'detalhe', 'editar', 'deletar', 'token'],
+    props: ['titulos', 'itens', 'criar', 'detalhe', 'editar', 'deletar', 'token', 'ordem', 'ordemcol'],
     data: function data() {
         return {
             buscar: ''
@@ -45624,21 +45628,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         submitForm: function submitForm(index) {
             document.getElementById(index).submit();
+        },
+        ordenaColuna: function ordenaColuna(coluna) {
+            this.ordemcol = coluna;
+            if (this.ordem.toLowerCase() == 'asc') {
+                this.ordem = 'desc';
+            } else {
+                this.ordem = 'asc';
+            }
         }
     },
     computed: {
         lista: function lista() {
 
-            this.itens.sort(function (a, b) {
-                if (a[0] > b[0]) {
-                    return 1;
-                }
-                if (a[0] < b[0]) {
-                    return -1;
-                }
-                return 0;
-            });
+            // Ordenação
+            var ordem = this.ordem || 'asc';
+            var ordemCol = this.ordemcol || 1;
 
+            ordem = ordem.toLowerCase();
+            ordemCol = parseInt(ordemCol);
+
+            if (ordem == 'asc') {
+                this.itens.sort(function (a, b) {
+                    if (a[ordemCol] > b[ordemCol]) {
+                        return 1;
+                    }
+                    if (a[ordemCol] < b[ordemCol]) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            } else {
+                this.itens.sort(function (a, b) {
+                    if (a[ordemCol] < b[ordemCol]) {
+                        return 1;
+                    }
+                    if (a[ordemCol] > b[ordemCol]) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            }
+
+            // Busca
             var busca = this.buscar;
             return this.itens.filter(function (resposta) {
                 for (var k = 0; k < resposta.length; k++) {
@@ -45699,10 +45731,20 @@ var render = function() {
       _c("thead", [
         _c(
           "tr",
-          _vm._l(_vm.titulos, function(titulo) {
-            return _c("th", { attrs: { scope: "col" } }, [
-              _vm._v(_vm._s(titulo))
-            ])
+          _vm._l(_vm.titulos, function(titulo, index) {
+            return _c(
+              "th",
+              {
+                staticClass: "ordena-tabela",
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    return _vm.ordenaColuna(index)
+                  }
+                }
+              },
+              [_vm._v(_vm._s(titulo))]
+            )
           }),
           0
         )
@@ -45840,6 +45882,55 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(73);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(11)("063dee06", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-81ddeb92\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TabelaLista.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-81ddeb92\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TabelaLista.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(10)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.ordena-tabela{\n    cursor: pointer;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

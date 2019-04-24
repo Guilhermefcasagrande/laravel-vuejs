@@ -9,7 +9,7 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col" v-for="titulo in titulos">{{titulo}}</th>
+                    <th v-on:click="ordenaColuna(index)" scope="col" class="ordena-tabela" v-for="(titulo, index) in titulos">{{titulo}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,7 +41,7 @@
 
 <script>
     export default {
-        props:['titulos', 'itens', 'criar', 'detalhe', 'editar', 'deletar', 'token'],
+        props:['titulos', 'itens', 'criar', 'detalhe', 'editar', 'deletar', 'token', 'ordem', 'ordemcol'],
         data: function(){
             return {
                 buscar:''
@@ -50,17 +50,41 @@
         methods: {
             submitForm: function(index){
                 document.getElementById(index).submit();
+            },
+            ordenaColuna: function(coluna){
+                this.ordemcol = coluna;
+                if(this.ordem.toLowerCase() == 'asc'){
+                    this.ordem = 'desc';
+                } else {
+                    this.ordem = 'asc';
+                }
             }
         },
         computed:{
             lista: function(){
 
-                this.itens.sort(function(a,b){
-                    if (a[0] > b[0]) { return 1;}
-                    if (a[0] < b[0]) { return -1;}
-                    return 0;
-                });
+                // Ordenação
+                let ordem = this.ordem || 'asc';
+                let ordemCol = this.ordemcol || 1;
 
+                ordem = ordem.toLowerCase();
+                ordemCol = parseInt(ordemCol);
+
+                if(ordem == 'asc'){
+                    this.itens.sort(function(a,b){
+                        if (a[ordemCol] > b[ordemCol]) { return 1;}
+                        if (a[ordemCol] < b[ordemCol]) { return -1;}
+                        return 0;
+                    });
+                } else {
+                    this.itens.sort(function(a,b){
+                        if (a[ordemCol] < b[ordemCol]) { return 1;}
+                        if (a[ordemCol] > b[ordemCol]) { return -1;}
+                        return 0;
+                    });
+                }
+
+                // Busca
                 let busca = this.buscar;
                 return this.itens.filter(resposta => {
                     for (let k = 0; k < resposta.length; k++) {
@@ -75,3 +99,9 @@
         }
     }
 </script>
+<style>
+    .ordena-tabela{
+        cursor: pointer;
+    }
+</style>
+
