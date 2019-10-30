@@ -20,8 +20,7 @@ class ArtigosController extends Controller
             ["titulo" => "Lista de Artigos", "url"=>''],
         ]);
 
-        // Cada nome separado por pontos, é como se fosse admin/artigos/index.blade.php
-        return view('admin.artigos.index', compact('listaMigalhas'));
+        return view('admin.artigos.index', ['listaMigalhas' => $listaMigalhas]);
     }
 
     /**

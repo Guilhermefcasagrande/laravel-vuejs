@@ -23,10 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Breadcumb
-        $listaMigalhas = json_encode([
-            ["titulo" => "Home", "url"=>""]
-        ]);
-        return view('home', compact('listaMigalhas'));
+        // dump('TEste');
+        // die;
+        return view('home');
     }
 }
