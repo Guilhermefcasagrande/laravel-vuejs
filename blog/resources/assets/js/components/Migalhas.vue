@@ -1,7 +1,7 @@
 <template>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li v-for="item in lista" v-bind:class="defineClass">
+            <li v-for="item in lista" v-bind:class="defineClass" v-bind:key="item">
                 <a v-if="item.url" v-bind:href="item.url">{{item.titulo}}</a>
                 <span v-if="!item.url">{{item.titulo}}</span>
             </li>
