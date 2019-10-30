@@ -5,6 +5,10 @@
     <pagina tamanho="12">
         <migalhas v-bind:lista="{{$listaMigalhas}}"></migalhas>
 
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#meuModalTeste" style="margin-bottom: 20px;">
+            Abrir modal de demonstração
+        </button>
+
         <painel titulo="Lista de Artigos" cor="panel-primary">
             <tabela-lista 
                 v-bind:titulos="['ID', 'Título', 'Descrição', 'Ações']"
@@ -23,5 +27,9 @@
             </tabela-lista>
         </painel>
     </pagina>
+
+    <modal nome="meuModalTeste">
+        <p>Teste</p>
+    </modal>
 
 @endsection
