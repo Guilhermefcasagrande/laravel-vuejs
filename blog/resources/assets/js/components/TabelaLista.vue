@@ -1,7 +1,8 @@
 <template>
     <div>
         <div class="form-inline">
-            <a v-if="criar" v-bind:href="criar" class="btn btn-primary">Criar</a>
+            <modal-link nome="meuModalTeste" titulo="Criar" classe="btn-primary"></modal-link>
+            
             <div class="form-group pull-right">
                 <input type="search" class="form-control" v-model="buscar" placeholder="Buscar...">
             </div>

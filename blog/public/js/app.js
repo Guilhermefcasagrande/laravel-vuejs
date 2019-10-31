@@ -45660,6 +45660,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['titulos', 'itens', 'criar', 'detalhe', 'editar', 'deletar', 'token', 'ordem', 'ordemcol'],
@@ -45738,39 +45739,44 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "form-inline" }, [
-      _vm.criar
-        ? _c(
-            "a",
-            { staticClass: "btn btn-primary", attrs: { href: _vm.criar } },
-            [_vm._v("Criar")]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group pull-right" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.buscar,
-              expression: "buscar"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "search", placeholder: "Buscar..." },
-          domProps: { value: _vm.buscar },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.buscar = $event.target.value
-            }
+    _c(
+      "div",
+      { staticClass: "form-inline" },
+      [
+        _c("modal-link", {
+          attrs: {
+            nome: "meuModalTeste",
+            titulo: "Criar",
+            classe: "btn-primary"
           }
-        })
-      ])
-    ]),
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group pull-right" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.buscar,
+                expression: "buscar"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "search", placeholder: "Buscar..." },
+            domProps: { value: _vm.buscar },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.buscar = $event.target.value
+              }
+            }
+          })
+        ])
+      ],
+      1
+    ),
     _vm._v(" "),
     _c("table", { staticClass: "table table-hover" }, [
       _c("thead", [
@@ -46103,11 +46109,12 @@ module.exports = Component.exports
 /* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(81)
 /* template */
-var __vue_template__ = null
+var __vue_template__ = __webpack_require__(82)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46125,6 +46132,22 @@ var Component = normalizeComponent(
   __vue_module_identifier__
 )
 Component.options.__file = "resources/assets/js/components/modal/ModalLink.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-43cb43fe", Component.options)
+  } else {
+    hotAPI.reload("data-v-43cb43fe", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
 
 module.exports = Component.exports
 
@@ -46249,6 +46272,61 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-9c787a38", module.exports)
+  }
+}
+
+/***/ }),
+/* 81 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['tipo', 'nome', 'titulo', 'classe']
+});
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "button",
+      {
+        class: "btn " + _vm.classe,
+        staticStyle: { "margin-bottom": "20px" },
+        attrs: {
+          type: "button",
+          "data-toggle": "modal",
+          "data-target": "#" + _vm.nome
+        }
+      },
+      [_vm._v("\n        " + _vm._s(_vm.titulo) + "\n    ")]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-43cb43fe", module.exports)
   }
 }
 
