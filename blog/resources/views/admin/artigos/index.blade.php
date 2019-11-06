@@ -25,7 +25,18 @@
     </pagina>
 
     <modal nome="meuModalTeste">
-        <p>Teste</p>
+        <formulario action="#" method="put" enctype="" token="@csrf">
+            <div class="form-group">
+                <label for="titulo">Título</label>
+                <input type="text" class="form-control" id="titulo" name="titulo">
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <input type="text" class="form-control" id="descricao" name="descricao">
+            </div>
+
+            <button type="submit" class="btn btn-info">Adicionar</button>
+        </formulario>
     </modal>
 
 @endsection
