@@ -45697,20 +45697,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (ordem == 'asc') {
                 this.itens.sort(function (a, b) {
-                    if (a[ordemCol] > b[ordemCol]) {
+                    if (Object.values(a)[ordemCol] > Object.values(b)[ordemCol]) {
                         return 1;
                     }
-                    if (a[ordemCol] < b[ordemCol]) {
+                    if (Object.values(a)[ordemCol] < Object.values(b)[ordemCol]) {
                         return -1;
                     }
                     return 0;
                 });
             } else {
                 this.itens.sort(function (a, b) {
-                    if (a[ordemCol] < b[ordemCol]) {
+                    if (Object.values(a)[ordemCol] < Object.values(b)[ordemCol]) {
                         return 1;
                     }
-                    if (a[ordemCol] > b[ordemCol]) {
+                    if (Object.values(a)[ordemCol] > Object.values(b)[ordemCol]) {
                         return -1;
                     }
                     return 0;
@@ -45718,15 +45718,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
 
             // Busca
-            var busca = this.buscar;
-            return this.itens.filter(function (resposta) {
-                for (var k = 0; k < resposta.length; k++) {
-                    if (resposta[k].toString().toLowerCase().indexOf(busca.toLowerCase()) >= 0) {
-                        return true;
+            if (this.buscar) {
+                var busca = this.buscar;
+                return this.itens.filter(function (resposta) {
+                    for (var k = 0; k < resposta.length; k++) {
+                        if (resposta[k].toString().toLowerCase().indexOf(busca.toLowerCase()) >= 0) {
+                            return true;
+                        }
                     }
-                }
-                return false;
-            });
+                    return false;
+                });
+            }
+
+            return this.itens;
         }
     }
 });
@@ -45787,6 +45791,7 @@ var render = function() {
             return _c(
               "th",
               {
+                key: index,
                 staticClass: "ordena-tabela",
                 attrs: { scope: "col" },
                 on: {
@@ -45807,9 +45812,10 @@ var render = function() {
         _vm._l(_vm.lista, function(item, index) {
           return _c(
             "tr",
+            { key: index },
             [
-              _vm._l(item, function(i) {
-                return _c("td", [_vm._v(_vm._s(i))])
+              _vm._l(item, function(i, key) {
+                return _c("td", { key: key }, [_vm._v(_vm._s(i))])
               }),
               _vm._v(" "),
               _c("td", [

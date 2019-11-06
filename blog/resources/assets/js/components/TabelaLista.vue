@@ -10,12 +10,12 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th v-on:click="ordenaColuna(index)" scope="col" class="ordena-tabela" v-for="(titulo, index) in titulos">{{titulo}}</th>
+                    <th v-on:click="ordenaColuna(index)" scope="col" class="ordena-tabela" v-for="(titulo, index) in titulos" v-bind:key="index">{{titulo}}</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(item, index) in lista">
-                    <td v-for="i in item">{{i}}</td>
+                <tr v-for="(item, index) in lista" v-bind:key="index">
+                    <td v-for="(i, key) in item" v-bind:key="key">{{i}}</td>
                     <td>
                         <form v-bind:id="index" v-if="deletar && token" v-bind:action="deletar" method="post">
                             <input type="hidden" name="_method" value="DELETE">
@@ -75,29 +75,33 @@
 
                 if(ordem == 'asc'){
                     this.itens.sort(function(a,b){
-                        if (a[ordemCol] > b[ordemCol]) { return 1;}
-                        if (a[ordemCol] < b[ordemCol]) { return -1;}
+                        if (Object.values(a)[ordemCol] > Object.values(b)[ordemCol]) { return 1;}
+                        if (Object.values(a)[ordemCol] < Object.values(b)[ordemCol]) { return -1;}
                         return 0;
                     });
                 } else {
                     this.itens.sort(function(a,b){
-                        if (a[ordemCol] < b[ordemCol]) { return 1;}
-                        if (a[ordemCol] > b[ordemCol]) { return -1;}
+                        if (Object.values(a)[ordemCol] < Object.values(b)[ordemCol]) { return 1;}
+                        if (Object.values(a)[ordemCol] > Object.values(b)[ordemCol]) { return -1;}
                         return 0;
                     });
                 }
 
                 // Busca
-                let busca = this.buscar;
-                return this.itens.filter(resposta => {
-                    for (let k = 0; k < resposta.length; k++) {
-                        if(resposta[k].toString().toLowerCase().indexOf(busca.toLowerCase()) >= 0){
-                            return true;
+                if(this.buscar){
+                    let busca = this.buscar;
+                    return this.itens.filter(resposta => {
+                        for (let k = 0; k < resposta.length; k++) {
+                            if(resposta[k].toString().toLowerCase().indexOf(busca.toLowerCase()) >= 0){
+                                return true;
+                            }
                         }
-                    }
-                    return false;
-                    
-                });
+                        return false;
+                        
+                    });
+                }
+
+                return this.itens;
             }
         }
     }
