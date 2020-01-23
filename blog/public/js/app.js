@@ -1382,7 +1382,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(73);
+module.exports = __webpack_require__(76);
 
 
 /***/ }),
@@ -1414,7 +1414,7 @@ Vue.component('tabela-lista', __webpack_require__(59));
 Vue.component('migalhas', __webpack_require__(64));
 Vue.component('modal-link', __webpack_require__(67));
 Vue.component('modal', __webpack_require__(70));
-Vue.component('formulario', __webpack_require__(83));
+Vue.component('formulario', __webpack_require__(73));
 
 var app = new Vue({
   el: '#app'
@@ -45662,9 +45662,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['titulos', 'itens', 'criar', 'detalhe', 'editar', 'deletar', 'token', 'ordem', 'ordemcol'],
+    props: ['titulos', 'itens', 'criar', 'detalhe', 'editar', 'deletar', 'token', 'ordem', 'ordemcol', 'modal'],
     data: function data() {
         return {
             buscar: '',
@@ -45748,13 +45751,19 @@ var render = function() {
       "div",
       { staticClass: "form-inline" },
       [
-        _c("modal-link", {
-          attrs: {
-            nome: "meuModalTeste",
-            titulo: "Criar",
-            classe: "btn-primary"
-          }
-        }),
+        _vm.criar && _vm.modal
+          ? _c("modal-link", {
+              attrs: {
+                nome: "adicionar",
+                titulo: "Criar",
+                classe: "btn-primary"
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.criar && !_vm.modal
+          ? _c("a", { attrs: { href: _vm.criar } }, [_vm._v("Criar")])
+          : _vm._e(),
         _vm._v(" "),
         _c("div", { staticClass: "form-group pull-right" }, [
           _c("input", {
@@ -45857,7 +45866,7 @@ var render = function() {
                             )
                           : _vm._e(),
                         _vm._v(" "),
-                        _vm.editar
+                        _vm.editar && !_vm.modal
                           ? _c(
                               "a",
                               {
@@ -45866,6 +45875,16 @@ var render = function() {
                               },
                               [_vm._v("Editar")]
                             )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.editar && _vm.modal
+                          ? _c("modal-link", {
+                              attrs: {
+                                nome: "editar",
+                                titulo: "Editar",
+                                classe: "btn-primary"
+                              }
+                            })
                           : _vm._e(),
                         _vm._v(" "),
                         _vm.deletar
@@ -45883,37 +45902,52 @@ var render = function() {
                               [_vm._v("Apagar")]
                             )
                           : _vm._e()
-                      ]
+                      ],
+                      1
                     )
                   : _vm._e(),
                 _vm._v(" "),
                 !_vm.token || !_vm.deletar
-                  ? _c("span", [
-                      _vm.detalhe
-                        ? _c(
-                            "a",
-                            {
-                              staticClass: "btn btn-primary",
-                              attrs: { href: _vm.detalhe }
-                            },
-                            [
-                              _c("i", { staticClass: "fas fa-search" }),
-                              _vm._v(" Detalhe")
-                            ]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.editar
-                        ? _c(
-                            "a",
-                            {
-                              staticClass: "btn btn-primary",
-                              attrs: { href: _vm.editar }
-                            },
-                            [_vm._v("Editar")]
-                          )
-                        : _vm._e()
-                    ])
+                  ? _c(
+                      "span",
+                      [
+                        _vm.detalhe
+                          ? _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: { href: _vm.detalhe }
+                              },
+                              [
+                                _c("i", { staticClass: "fas fa-search" }),
+                                _vm._v(" Detalhe")
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.editar && !_vm.modal
+                          ? _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: { href: _vm.editar }
+                              },
+                              [_vm._v("Editar")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.editar && _vm.modal
+                          ? _c("modal-link", {
+                              attrs: {
+                                nome: "editar",
+                                titulo: "Editar",
+                                classe: "btn-primary"
+                              }
+                            })
+                          : _vm._e()
+                      ],
+                      1
+                    )
                   : _vm._e()
               ])
             ],
@@ -46126,7 +46160,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("span", [
     _c(
       "button",
       {
@@ -46302,29 +46336,14 @@ if (false) {
 
 /***/ }),
 /* 73 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(84)
+var __vue_script__ = __webpack_require__(74)
 /* template */
-var __vue_template__ = __webpack_require__(85)
+var __vue_template__ = __webpack_require__(75)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46363,7 +46382,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 84 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46405,7 +46424,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 85 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -46444,6 +46463,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-24dfab2e", module.exports)
   }
 }
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

@@ -1,8 +1,9 @@
 <template>
     <div>
         <div class="form-inline">
-            <modal-link nome="meuModalTeste" titulo="Criar" classe="btn-primary"></modal-link>
-            
+            <modal-link nome="adicionar" v-if="criar && modal" titulo="Criar" classe="btn-primary"></modal-link>
+            <a v-if="criar && !modal" v-bind:href="criar">Criar</a>
+
             <div class="form-group pull-right">
                 <input type="search" class="form-control" v-model="buscar" placeholder="Buscar...">
             </div>
@@ -22,7 +23,9 @@
                             <input type="hidden" name="_token" v-bind:value="token">
 
                             <a v-if="detalhe" v-bind:href="detalhe" class="btn btn-primary"><i class="fas fa-search"></i> Detalhe</a>
-                            <a v-if="editar" v-bind:href="editar" class="btn btn-primary">Editar</a>
+                            <a v-if="editar && !modal" v-bind:href="editar" class="btn btn-primary">Editar</a>
+                            <modal-link nome="editar" v-if="editar && modal" titulo="Editar" classe="btn-primary"></modal-link>
+
 
                             <!-- O submit poderia ser feito com um button type=submit  -->
                             <a v-if="deletar" v-bind:href="deletar" v-on:click="submitForm(index)" class="btn btn-danger">Apagar</a>
@@ -30,9 +33,9 @@
 
                         <span v-if="!token || !deletar">
                             <a v-if="detalhe" v-bind:href="detalhe" class="btn btn-primary"><i class="fas fa-search"></i> Detalhe</a>
-                            <a v-if="editar" v-bind:href="editar" class="btn btn-primary">Editar</a>
+                            <a v-if="editar && !modal" v-bind:href="editar" class="btn btn-primary">Editar</a>
+                            <modal-link nome="editar" v-if="editar && modal" titulo="Editar" classe="btn-primary"></modal-link>
                         </span>
-                        
                     </td>
                 </tr>
             </tbody>
@@ -42,7 +45,7 @@
 
 <script>
     export default {
-        props:['titulos', 'itens', 'criar', 'detalhe', 'editar', 'deletar', 'token', 'ordem', 'ordemcol'],
+        props:['titulos', 'itens', 'criar', 'detalhe', 'editar', 'deletar', 'token', 'ordem', 'ordemcol', 'modal'],
         data: function(){
             return {
                 buscar:'',
