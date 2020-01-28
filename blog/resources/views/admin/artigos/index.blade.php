@@ -21,8 +21,8 @@
         </painel>
     </pagina>
 
-    <modal nome="adicionar">
-        <formulario action="#" method="put" enctype="" token="@csrf">
+    <modal nome="adicionar" titulo="Adicionar">
+        <formulario id="form-adicionar" action="#" method="put" enctype="" token="@csrf">
             <div class="form-group">
                 <label for="titulo">Título</label>
                 <input type="text" class="form-control" id="titulo" name="titulo">
@@ -31,13 +31,15 @@
                 <label for="descricao">Descrição</label>
                 <input type="text" class="form-control" id="descricao" name="descricao">
             </div>
-
-            <button type="submit" class="btn btn-info">Adicionar</button>
         </formulario>
+        <span slot="botoes">
+            <button form="form-adicionar" type="submit" class="btn btn-info">Adicionar</button>
+        </span>
+
     </modal>
 
-    <modal nome="editar">
-        <formulario action="#" method="put" enctype="" token="@csrf">
+    <modal nome="editar" titulo="Editar">
+        <formulario id="form-editar" action="#" method="put" enctype="" token="@csrf">
             <div class="form-group">
                 <label for="titulo">Título</label>
                 <input type="text" class="form-control" id="titulo" name="titulo" v-model="$store.state.item.titulo">
@@ -46,12 +48,13 @@
                 <label for="descricao">Descrição</label>
                 <input type="text" class="form-control" id="descricao" name="descricao" v-model="$store.state.item.descricao">
             </div>
-
-            <button type="submit" class="btn btn-info">Atualizar</button>
         </formulario>
+        <span slot="botoes">
+            <button form="form-editar" type="submit" class="btn btn-info">Atualizar</button>
+        </span>
     </modal>
 
-    <modal nome="detalhe">
+    <modal nome="detalhe" titulo="Detalhes">
         <painel v-bind:titulo="$store.state.item.titulo">
         <p>@{{$store.state.item.descricao}}</p>
         </painel>

@@ -98,6 +98,7 @@
                 if(this.buscar){
                     let busca = this.buscar;
                     return this.itens.filter(resposta => {
+                        resposta = Object.values(resposta);
                         for (let k = 0; k < resposta.length; k++) {
                             if(resposta[k].toString().toLowerCase().indexOf(busca.toLowerCase()) >= 0){
                                 return true;

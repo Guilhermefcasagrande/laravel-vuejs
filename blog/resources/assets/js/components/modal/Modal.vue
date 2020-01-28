@@ -3,7 +3,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{titulo}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -12,7 +12,8 @@
                     <slot></slot>
                 </div>
                 <div class="modal-footer">
-                    
+                    <slot name="botoes"></slot>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>
@@ -21,6 +22,6 @@
 
 <script>
     export default {
-        props:['nome']
+        props:['nome', 'titulo']
     }
 </script>
