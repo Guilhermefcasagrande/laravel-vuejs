@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="form-inline">
-            <p>{{this.$store.state.itens}}</p>
             <modal-link nome="adicionar" v-if="criar && modal" titulo="Criar" classe="btn-primary"></modal-link>
             <a v-if="criar && !modal" v-bind:href="criar">Criar</a>
 
@@ -25,7 +24,7 @@
 
                             <a v-if="detalhe" v-bind:href="detalhe" class="btn btn-primary"><i class="fas fa-search"></i> Detalhe</a>
                             <a v-if="editar && !modal" v-bind:href="editar" class="btn btn-primary">Editar</a>
-                            <modal-link nome="editar" v-if="editar && modal" titulo="Editar" classe="btn-primary"></modal-link>
+                            <modal-link nome="editar" v-if="editar && modal" v-bind:item="item" titulo="Editar" classe="btn-primary"></modal-link>
 
 
                             <!-- O submit poderia ser feito com um button type=submit  -->
@@ -69,8 +68,6 @@
         },
         computed:{
             lista: function(){
-
-                this.$store.commit('setItens', {opa:"OK"});
 
                 // Ordenação
                 let ordem = this.ordemAux;

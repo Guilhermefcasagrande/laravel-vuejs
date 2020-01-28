@@ -40,14 +40,14 @@
         <formulario action="#" method="put" enctype="" token="@csrf">
             <div class="form-group">
                 <label for="titulo">Título</label>
-                <input type="text" class="form-control" id="titulo" name="titulo">
+                <input type="text" class="form-control" id="titulo" name="titulo" v-model="$store.state.item.titulo">
             </div>
             <div class="form-group">
                 <label for="descricao">Descrição</label>
-                <input type="text" class="form-control" id="descricao" name="descricao">
+                <input type="text" class="form-control" id="descricao" name="descricao" v-model="$store.state.item.descricao">
             </div>
 
-            <button type="submit" class="btn btn-info">Adicionar</button>
+            <button type="submit" class="btn btn-info">Atualizar</button>
         </formulario>
     </modal>
     
