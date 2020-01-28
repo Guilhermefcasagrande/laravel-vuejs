@@ -46748,6 +46748,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['titulos', 'itens', 'criar', 'detalhe', 'editar', 'deletar', 'token', 'ordem', 'ordemcol', 'modal'],
@@ -46935,7 +46939,7 @@ var render = function() {
                           domProps: { value: _vm.token }
                         }),
                         _vm._v(" "),
-                        _vm.detalhe
+                        _vm.detalhe && !_vm.modal
                           ? _c(
                               "a",
                               {
@@ -46947,6 +46951,17 @@ var render = function() {
                                 _vm._v(" Detalhe")
                               ]
                             )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.detalhe && _vm.modal
+                          ? _c("modal-link", {
+                              attrs: {
+                                nome: "detalhe",
+                                item: item,
+                                titulo: "Detalhe",
+                                classe: "btn-primary"
+                              }
+                            })
                           : _vm._e(),
                         _vm._v(" "),
                         _vm.editar && !_vm.modal
@@ -46995,7 +47010,7 @@ var render = function() {
                   ? _c(
                       "span",
                       [
-                        _vm.detalhe
+                        _vm.detalhe && !_vm.modal
                           ? _c(
                               "a",
                               {
@@ -47007,6 +47022,17 @@ var render = function() {
                                 _vm._v(" Detalhe")
                               ]
                             )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.detalhe && _vm.modal
+                          ? _c("modal-link", {
+                              attrs: {
+                                nome: "detalhe",
+                                item: item,
+                                titulo: "Detalhe",
+                                classe: "btn-primary"
+                              }
+                            })
                           : _vm._e(),
                         _vm._v(" "),
                         _vm.editar && !_vm.modal

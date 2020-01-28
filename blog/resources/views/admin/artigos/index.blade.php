@@ -50,6 +50,12 @@
             <button type="submit" class="btn btn-info">Atualizar</button>
         </formulario>
     </modal>
+
+    <modal nome="detalhe">
+        <painel v-bind:titulo="$store.state.item.titulo">
+        <p>@{{$store.state.item.descricao}}</p>
+        </painel>
+    </modal>
     
 
 @endsection
