@@ -7,7 +7,7 @@
 
         <painel titulo="Lista de Artigos" cor="panel-primary">
             <tabela-lista 
-                v-bind:titulos="['ID', 'Título', 'Descrição', 'Ações']"
+                v-bind:titulos="['ID', 'Título', 'Descrição', 'Data', 'Ações']"
                 v-bind:itens="{{$listaArtigos}}"
                 criar="#criar"
                 detalhe="#criar"
@@ -22,7 +22,7 @@
     </pagina>
 
     <modal nome="adicionar" titulo="Adicionar">
-        <formulario id="form-adicionar" action="#" method="put" enctype="" token="@csrf">
+        <formulario id="form-adicionar" action="{{route('artigos.store')}}" method="post" token="{{csrf_token()}}">
             <div class="form-group">
                 <label for="titulo">Título</label>
                 <input type="text" class="form-control" id="titulo" name="titulo">
@@ -30,6 +30,14 @@
             <div class="form-group">
                 <label for="descricao">Descrição</label>
                 <input type="text" class="form-control" id="descricao" name="descricao">
+            </div>
+            <div class="form-group">
+                <label for="data">Data</label>
+                <input type="datetime-local" class="form-control" id="data" name="data">
+            </div>
+            <div class="form-group">
+                <label for="conteudo">Conteúdo</label>
+                <textarea name="conteudo" id="conteudo" class="form-control"></textarea>
             </div>
         </formulario>
         <span slot="botoes">
