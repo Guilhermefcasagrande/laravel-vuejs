@@ -3,6 +3,16 @@
 @section('content')
 
     <pagina tamanho="12">
+
+        @if($errors->all())
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                @foreach ($errors->all() as $error)
+                    <p>{{$error}}</p>
+                @endforeach
+            </div>
+        @endif
+
         <migalhas v-bind:lista="{{$listaMigalhas}}"></migalhas>
 
         <painel titulo="Lista de Artigos" cor="panel-primary">
@@ -25,19 +35,19 @@
         <formulario id="form-adicionar" action="{{route('artigos.store')}}" method="post" token="{{csrf_token()}}">
             <div class="form-group">
                 <label for="titulo">Título</label>
-                <input type="text" class="form-control" id="titulo" name="titulo">
+                <input type="text" class="form-control" id="titulo" name="titulo" value="{{old('titulo')}}">
             </div>
             <div class="form-group">
                 <label for="descricao">Descrição</label>
-                <input type="text" class="form-control" id="descricao" name="descricao">
+                <input type="text" class="form-control" id="descricao" name="descricao" value="{{old('descricao')}}">
             </div>
             <div class="form-group">
                 <label for="data">Data</label>
-                <input type="datetime-local" class="form-control" id="data" name="data">
+                <input type="date" class="form-control" id="data" name="data" value="{{old('data')}}">
             </div>
             <div class="form-group">
                 <label for="conteudo">Conteúdo</label>
-                <textarea name="conteudo" id="conteudo" class="form-control"></textarea>
+                <textarea name="conteudo" id="conteudo" class="form-control">{{old('conteudo')}}</textarea>
             </div>
         </formulario>
         <span slot="botoes">

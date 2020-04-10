@@ -46,6 +46,12 @@ class ArtigosController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'titulo' => 'required',
+            'descricao' => 'required',
+            'data' => 'required'
+        ]);
+
         Artigo::create($request->all());
 
         return redirect()->back();
