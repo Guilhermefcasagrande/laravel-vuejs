@@ -23,7 +23,7 @@
                             <input type="hidden" name="_token" v-bind:value="token">
 
                             <a v-if="detalhe && !modal" v-bind:href="detalhe" class="btn btn-primary"><i class="fas fa-search"></i> Detalhe</a>
-                            <modal-link nome="detalhe" v-if="detalhe && modal" v-bind:item="item" titulo="Detalhe" classe="btn-primary"></modal-link>
+                            <modal-link nome="detalhe" v-if="detalhe && modal" v-bind:item="item" v-bind:url="detalhe" titulo="Detalhe" classe="btn-primary"></modal-link>
 
                             <a v-if="editar && !modal" v-bind:href="editar" class="btn btn-primary">Editar</a>
                             <modal-link nome="editar" v-if="editar && modal" v-bind:item="item" titulo="Editar" classe="btn-primary"></modal-link>
@@ -35,7 +35,7 @@
 
                         <span v-if="!token || !deletar">
                             <a v-if="detalhe && !modal" v-bind:href="detalhe" class="btn btn-primary"><i class="fas fa-search"></i> Detalhe</a>
-                            <modal-link nome="detalhe" v-if="detalhe && modal" v-bind:item="item" titulo="Detalhe" classe="btn-primary"></modal-link>
+                            <modal-link nome="detalhe" v-if="detalhe && modal" v-bind:item="item" v-bind:url="detalhe" titulo="Detalhe" classe="btn-primary"></modal-link>
 
                             <a v-if="editar && !modal" v-bind:href="editar" class="btn btn-primary">Editar</a>
                             <modal-link nome="editar" v-if="editar && modal" titulo="Editar" classe="btn-primary"></modal-link>

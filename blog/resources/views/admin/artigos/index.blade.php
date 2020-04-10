@@ -20,7 +20,7 @@
                 v-bind:titulos="['ID', 'Título', 'Descrição', 'Data', 'Ações']"
                 v-bind:itens="{{$listaArtigos}}"
                 criar="#criar"
-                detalhe="#criar"
+                detalhe="/admin/artigos/"
                 editar="#criar"
                 deletar="#criar"
                 token="234234234"
@@ -75,6 +75,7 @@
     <modal nome="detalhe" titulo="Detalhes">
         <painel v-bind:titulo="$store.state.item.titulo">
         <p>@{{$store.state.item.descricao}}</p>
+        <p>@{{$store.state.item.conteudo}}</p>
         </painel>
     </modal>
     
